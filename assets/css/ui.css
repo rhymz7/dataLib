@@ -1,0 +1,41 @@
+body
+{
+  width: 80%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+#mapid { 
+  height: 200px;
+  border: 1px solid black;
+   padding: 15px;
+   border-radius: 5px;
+ }
+
+ #filter
+ {
+   border: 1px solid black;
+   padding: 15px;
+   border-radius: 5px;
+   background-color: rgb(233, 227, 227);
+ }
+
+ #listener
+ {
+   border: 1px solid black;
+   padding: 15px;
+   border-radius: 5px;
+   background-color: rgb(233, 227, 227);
+ }
+
+ #table
+ {
+   border: 1px solid black;
+   padding: 15px;
+   border-radius: 5px;
+   background-color: rgb(233, 227, 227);
+ }
+ h2
+ {
+   color: rgb(150, 12, 12);
+ }

@@ -1,0 +1,24 @@
+
+#example
+{
+    background-color: rgb(255, 82, 82);
+}
+#table
+{
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;    
+    width: 70%;
+    position: absolute; z-index: auto;
+    display: block;
+}
+#example_next
+{
+    padding: 2px;
+    border: solid 2px black;
+}
+#example_previous
+{
+    padding: 3px;
+    border: solid 2px black;
+}

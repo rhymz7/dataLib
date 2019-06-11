@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <title>TEST</title>
+
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./vendor/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" media="screen" />
+    <link rel="stylesheet" href="./vendor/Leaflet.markercluster/dist/MarkerCluster.css" media="screen" />
+    <link rel="stylesheet" href="./vendor/Leaflet.markercluster/dist/MarkerCluster.Default.css" media="screen" />
+    <link rel="stylesheet" href="./vendor/Leaflet.label/dist/leaflet.label.css" media="screen" />
+    <link rel="stylesheet" href="./vendor/jstree/themes/proton/style.css" media="screen" />
+    <link rel="stylesheet" href="./vendor/Leaflet.ruler-marker/src/leaflet-ruler.css" media="screen" />
+    <link rel="stylesheet" href="./assets/css/ui.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="vendor/DataTables/datatables.min.css" />
+
+  </head>
+  <body>
+      <section>
+            <h2>Filter</h2>
+            <!-- The Filter -->
+            <div id="filter">
+                <h3>Choix catégorie</h3>
+                <h4>Type</h4>
+                <div id="id_checkbox1" data-source="voitures" data-filter="Type">    
+                    <form>
+                    </form>
+                </div>
+                <hr></hr>
+                <h4>Marque</h4>
+                <div id="id_checkbox2" data-source="voitures" data-filter="marque">    
+                        <form>
+                        </form>
+                </div>
+            </div> 
+                <hr></hr>
+
+                <button onclick="dataview.checkAllBox()">Select All</button>                
+                <button onclick="dataview.removeAllBox()">Deselect All</button>
+                <button onclick="dataview.hide('filter')">Hide/Show Filter</button>
+
+            <hr></hr>
+
+            <h2>Listener</h2>
+            <!-- The Listener -->
+            <div id="listener" class="display:block">
+            </div>
+            <button onclick="dataview.hide('listener')">Hide/Show Listener</button>
+            <button onclick="listener.clear()">Clear</button>
+            <hr></hr>
+
+            <h2>Table</h2>
+            <!-- The Table -->
+            <div id="table" >
+                <table id="example" class="display:block" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th data-source="__id" >id</th>
+                            <th data-source="name" >Nom</th>
+                            <th data-source="marque" >Marque</th>
+                            <th data-source="etat" >Etat</th>
+                            <th data-source="Type" >Type</th>
+                        </tr>
+                    </thead>
+                </table>
+                </div>  
+                <button onclick="dataview.hide('table')">Hide/Show Table</button>
+                <hr></hr>
+
+            <h2>Map</h2>
+
+            <div id="map-popup-template" style="display: none">
+                <h3 data-source="name">nom du modèle</h3>
+                <p data-source="marque">autre info</p>
+                <p data-source="etat">autre info</p>
+                <p data-source="Type">autre info</p>
+                <a data-source="link=href">Détails</a>
+                <a data-source="media=href">Photo</a>
+                <img data-source="media=src,name=alt" style="width: 60px"/>
+            </div>
+            
+            <!-- The Map -->
+            <div id="mapid" style="width: 600px; height: 400px;" class="display:block">The map...</div>
+            <button class="mapbutton" onclick="dataview.hide('mapid')">Hide/Show Map</button>
+
+
+              <!-- JS UI -->
+            <script type="text/javascript" src="./vendor/jquery.min.js"></script>
+            <script type="text/javascript" src="./assets/js/ui.js"></script>
+
+            <!-- JS Carto & Tree libs -->
+            <script type="text/javascript" src="vendor/leaflet/leaflet.js"></script>
+            <script type="text/javascript" src="vendor/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+            <script type="text/javascript" src="vendor/Leaflet.label/dist/leaflet.label.js"></script>
+            <script type="text/javascript" src="vendor/Leaflet.ruler-marker/src/leaflet-ruler.js"></script>
+            <script type="text/javascript" src="vendor/leaflet.oms.min.js"></script>
+            <script type="text/javascript" src="vendor/jstree/jstree.min.js"></script>
+        
+            <!-- JS -->
+            <script type="text/javascript" src="lib/DataView.js"></script>
+            <script type="text/javascript" src="lib/Listener.js"></script>
+            <script type="text/javascript" src="lib/Filter.js"></script>
+            <script type="text/javascript" src="lib/TableView.js"></script>
+            <script type="text/javascript" src="lib/MapView.js"></script>
+            
+            <!-- JS Table -->
+            <script type="text/javascript" src="vendor/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+
+            <script>
+                // Config des div id
+                var mapid = "mapid" ;
+                var map_popup_template_id = '#map-popup-template' ;
+                var id_listener = '#listener';
+                var id_table = '#example';
+
+                var listener;
+                var dataview=null;
+
+                jQuery(function(){
+                    // code appelé après chargement du DOM (document.ready)
+                    var self=this;
+                    jQuery.getJSON( 'data/data.json', function( data )
+                    {
+                        var filter = new Filter( data, ['#id_checkbox1', '#id_checkbox2'] );
+                        listener = new Listener( id_listener );
+                        var tableview = new TableView( data.voitures, id_table );
+                        var map = new MapView( data.voitures, mapid, map_popup_template_id );
+                        self.dataview = new DataView( data, filter, [tableview,listener,map] );
+                    });
+                 }); 
+            </script>
+  </section>
+  </body> 
+</html>

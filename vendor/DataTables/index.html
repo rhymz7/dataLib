@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="DataTables-1.10.18/css/style.css" />
+    
+</head>
+<body>
+    
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+     
+    </table>
+
+<button onclick=deleteAll()>Delete all</button>
+<button onclick=getJson()>Reset</button>
+<button onclick=addRow()>Add row</button>
+<button onclick=addRows()>Add rows</button>
+<input id='valeurIdRemove' type="text" id="name" name="name" required placeholder="id to remove">
+<input type="submit" value="Submit" onclick=removeRow()  >
+<input id='valeurId' type="text" id="name" name="name" required placeholder="id to add">
+<input type="submit" value="Submit" onclick=addId()  >
+
+<script src="jquery.min.js"></script>
+<script src="DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+
+<script>
+    // Datatable lib
+    var table = $('#example').DataTable();
+
+    var getJson = function() {
+        $.getJSON( "siae.json", function(data)
+                {
+                    var table =  $('#example').DataTable( {
+                        destroy: true,
+                        data: data,
+                        columns: [
+                            { data: 'DT_RowId' },
+                            { data: 'name' },
+                            { data: 'address' },
+                            { data: 'phone' },
+                            { data: 'mail' }
+                        ]
+                     } );
+                 } );
+    }
+
+    var addId = function () {
+        var id = document.getElementById("valeurId").value; 
+         tryJson =  $.getJSON( "siae.json", function(data)
+                {
+                    var table = $('#example').DataTable();
+                    table.row.add( {
+                            "DT_RowId":   tryJson.responseJSON[id].DT_RowId,
+                            "name":       tryJson.responseJSON[id].name,
+                            "address":   tryJson.responseJSON[id].address,
+                            "phone":     tryJson.responseJSON[id].phone,
+                            "mail":      tryJson.responseJSON[id].mail,
+
+                        } ).draw();
+                     } );
+    }
+
+    var removeRow = function () {
+        var id = document.getElementById("valeurIdRemove").value; 
+        var table = $('#example').DataTable();
+        table
+        .row( '#' + id )
+        .remove()
+        .draw();
+    }
+
+    var deleteAll = function () {
+        var table = $('#example').DataTable();
+        var rows = table
+            .rows()
+            .remove()
+            .draw();
+    }
+
+    var addRow = function () {
+        var table = $('#example').DataTable();
+        table.row.add( {
+                "name":       "Tiger Nixon",
+                "address":   "System Architect",
+                "phone":     "$3,120",
+                "mail" :     "asept.saintemaure@orange.fr"
+            } ).draw();
+    }
+
+    var addRows = function () {
+        var table = $('#example').DataTable();
+        table.rows.add( [ 
+        {
+                "name":       "Tiger Nixon",
+                "address":   "System Architect",
+                "phone":     "$3,120",
+                "mail" :     "asept.saintemaure@orange.fr"
+            },
+            {
+                "name":       "Tiger Nixon",
+                "address":   "System Architect",
+                "phone":     "$3,120",
+                "mail" :     "asept.saintemaure@orange.fr"
+            },
+            {
+                "name":       "Tiger Nixon",
+                "address":   "System Architect",
+                "phone":     "$3,120",
+                "mail" :     "asept.saintemaure@orange.fr"
+            },
+            {
+                "name":       "Tiger Nixon",
+                "address":   "System Architect",
+                "phone":     "$3,120",
+                "mail" :     "asept.saintemaure@orange.fr"
+            }
+        ] )
+    .draw();
+}
+
+ getJson();
+
+</script>
+</body>
+</html>
