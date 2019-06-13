@@ -3,6 +3,8 @@ Configuration :
 
 - Filter :
 Dans le <div id="filter">, insérer autant de filtres que nécessaire, sous cette forme :
+![img1t](img/img1)
+
     <h4>Type</h4>
     <div id="id_checkbox1" data-source="voitures" data-filter="Type">    
     <form>
