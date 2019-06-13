@@ -1,6 +1,6 @@
 __Requirements__ :
 
-##titre Configuration :
+##Configuration 
 Le fichier data.json est à placer dans /data, sous la forme suivante : 
 
 ![img5](img/img5.png)
