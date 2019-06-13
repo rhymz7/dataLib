@@ -1,5 +1,6 @@
 Requirements :
-Configuration :
+
+_Configuration_ :
 Le fichier data.json est à placer dans /data, sous la forme suivante : 
 
 ![img5](img/img5.png)
@@ -7,7 +8,7 @@ Le fichier data.json est à placer dans /data, sous la forme suivante :
 Toute la configuration se fait dans le fichier index.html;
 Avec les points ci-dessous :
 
-- Filter :
+- _Filter_ :
 Dans le 'div id="filter"', insérer autant de filtres que nécessaire, sous cette forme :
 
 ![img1](img/img1.png)
@@ -19,7 +20,7 @@ data-source est la source à aller chercher;
 data-filter est le paramètre qui sera utilisé comme filtre;
 
     
-- Table :
+- _Table_ :
 Configuration des colonnes dans la balise 'tr', sous cette forme : 
 
 ![img2](img/img2.png)
@@ -28,7 +29,7 @@ Ici le rectangle rouge correspond à une colonne.
 Le data-source correspondant au paramètre faisant référence.
 Insérer autant de 'th' que nécessaire.
 
-- Popup : 
+- _Popup_ : 
 à configurer sous cette forme : 
 
 ![img3](img/img3.png)
@@ -41,7 +42,7 @@ possible également sous cette forme :
 ce qui permet d'ajouter un attribut à la balise, ici l'attribut 'src', qui va chercher 'media' comme référence.
 Il est possible de mettre autant d'attributs que nécessaire, séparés par ','
 
-- script :
+- _script_ :
 Configuration des ids;
 
 ![img4](img/img4.png)
