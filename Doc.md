@@ -1,21 +1,30 @@
 Requirements :
 Configuration :
+Le fichier data.json est à placer dans /data, sous la forme suivante : 
+
+![img5](img/img5.png)
+
+Toute la configuration se fait dans le fichier index.html;
+Avec les points ci-dessous :
 
 - Filter :
 Dans le 'div id="filter"', insérer autant de filtres que nécessaire, sous cette forme :
 
 ![img1](img/img1.png)
 
+Ici chaque rectangle rouge correspond à un filtre, avec tous les éléments à contenir.
 le 'h4' correspondant au filtre choisi;
 Ici il faut incrémenter "id_checkbox1" selon le nombre de filtres;
 data-source est la source à aller chercher;
 data-filter est le paramètre qui sera utilisé comme filtre;
+
     
 - Table :
 Configuration des colonnes dans la balise 'tr', sous cette forme : 
 
 ![img2](img/img2.png)
 
+Ici le rectangle rouge correspond à une colonne.
 Le data-source correspondant au paramètre faisant référence.
 Insérer autant de 'th' que nécessaire.
 
@@ -37,4 +46,9 @@ Configuration des ids;
 
 ![img4](img/img4.png)
 
+Configuration lors de la création des instances : 
 
+![img6](img/img6.png)
+
+Rectangle rouge : ajouter les div correspondantes au(x) filter(s);
+Rectangles verts : modifier selon le type de données, ex: data.commerces, data.entreprises etc.
