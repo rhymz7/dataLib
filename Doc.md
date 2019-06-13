@@ -2,7 +2,7 @@ Requirements :
 Configuration :
 
 - Filter :
-Dans le <div id="filter">, insérer autant de filtres que nécessaire, sous cette forme :
+Dans le "<div id="filter">", insérer autant de filtres que nécessaire, sous cette forme :
 ![img1t](img/img1.png)
 
     <h4>Type</h4>
